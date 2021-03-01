@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: 'dependencies.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    testBuildType "staging"
+    defaultConfig {
+        applicationId "com.example.currencyconverter"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "SERVER_URL", '"http://api.currencylayer.com"'
+            buildConfigField "String", "API_KEY", '"143eac80aa169ee4975ad5f2026a3ae3"'
+        }
+
+        staging {
+            initWith debug
+            buildConfigField "int", "port", "55253"
+            buildConfigField "String", "SERVER_URL", '"http://127.0.0.1:55253/"'
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    tasks.withType(Test) {
+        testLogging {
+            exceptionFormat "full"
+            events "started", "skipped", "passed", "failed"
+            showStandardStreams true
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //androidx and material design
+    implementation androidxDep.values()
+
+    //NetworkDependencies
+    implementation networkingDependencies.values()
+
+    //RxJava Dependency
+
+    implementation rxJavaDependencies.values()
+
+
+    // Database Dependency
+    implementation roomDbDep.values()
+
+    // testing
+    testImplementation tesDependencies.values()
+    androidTestImplementation tesDependencies.values()
+    testImplementation unitTestSpecificDep.values()
+
+    //jetpack
+    testImplementation jetPackDependies.values()
+
+    // extra libraries: hilt + rcadapter
+    implementation externalLibsDep.values()
+
+    // annotations
+    kapt annotationsDep.values()
+
+}

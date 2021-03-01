@@ -1,0 +1,100 @@
+ext {
+
+    //Todo: add other sections
+    def roomVersion = 0
+    def retrofitVersion = "2.9.0"
+    def okttpVesion = "4.9.0"
+
+    def rxJavaVersion = 0
+
+
+    def lifecycle_version = "2.2.0"
+
+    androidxDep =
+            [
+                    core: 'androidx.core:core-ktx:1.3.2',
+                    appcompate: 'androidx.appcompat:appcompat:1.2.0',
+                    materialDesign: 'com.google.android.material:material:1.3.0',
+                    constraintlayout: 'androidx.constraintlayout:constraintlayout:2.0.4',
+                    legacy: 'androidx.legacy:legacy-support-v4:1.0.0',
+                    fragment: 'androidx.fragment:fragment-ktx:1.3.0'
+            ]
+
+    rxJavaDependencies =
+            [
+
+                    rx_android: "io.reactivex.rxjava2:rxandroid:2.1.1",
+                    rx_java   : "io.reactivex.rxjava2:rxjava:2.2.10"
+
+            ]
+
+    networkingDependencies =
+            [
+                    retrofit          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                    rxjava_adapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+                    gson_adaptor      : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+                    okhttp            : "com.squareup.okhttp3:okhttp:$okttpVesion",
+                    okhttp_interceptor: "com.squareup.okhttp3:logging-interceptor:$okttpVesion"
+            ]
+
+    jetPackDependies =
+            [
+
+                    live_data: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+                    view_modl: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+            ]
+
+
+    tesDependencies =
+            [
+
+
+                    core               : "androidx.test:core:1.3.0",
+
+                    // AndroidJUnitRunner and JUnit Rules
+                    runner             : "androidx.test:runner:1.3.0",
+                    rules              : "androidx.test:rules:1.3.0",
+
+                    // Assertions
+                    junit              : "androidx.test.ext:junit:1.1.2",
+                    android_truth      : "androidx.test.ext:truth:1.3.0",
+                    google_truth       : "com.google.truth:truth:1.0",
+                    //    // Espresso dependencies
+                    espresso_cor       : "androidx.test.espresso:espresso-core:3.3.0",
+
+                    espresso_intent    : "androidx.test.espresso:espresso-intents:3.3.0",
+                    espresso_idling    : "androidx.test.espresso.idling:idling-concurrent:3.3.0",
+                    instantTaskExecuter: "androidx.arch.core:core-testing:2.1.0",
+                    //mocking
+                    mockk              : "io.mockk:mockk:1.9.1",
+                    mock_web_server    : "com.squareup.okhttp3:mockwebserver:4.9.0",
+                    json               : "org.json:json:20180813"
+            ]
+
+    unitTestSpecificDep =
+            [
+                    robo_electric: "org.robolectric:robolectric:4.4"
+            ]
+    androidTestSpecificDep =
+            [
+
+            ]
+
+    externalLibsDep =
+
+            [
+                    rc_adapter: 'com.irfan.android:rcadapter:1.0.0',
+                    hilt: "com.google.dagger:hilt-android:$hilt_version"
+            ]
+
+    roomDbDep =
+            [
+                    runtime:"androidx.room:room-runtime:2.2.6",
+                    rxjva:  "androidx.room:room-rxjava2:2.2.6"
+            ]
+    annotationsDep=
+            [
+                    room: "androidx.room:room-compiler:2.2.6",
+                    hilt: "com.google.dagger:hilt-android-compiler:$hilt_version"
+            ]
+}
